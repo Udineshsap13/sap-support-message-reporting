@@ -1,0 +1,156 @@
+{
+  "_version": "1.45.0",
+  "sap.app": {
+    "id": "v4.ovp.ovpv4",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:ovp",
+      "version": "1.7.5",
+      "toolsId": "3642bd74-ba90-4727-9658-f7c5a9e68430"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/reporting/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.107.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {},
+        "sap.ovp": {},
+        "sap.ui.rta": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "v4.ovp.ovpv4.i18n.i18n"
+        }
+      },
+      "mainService": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    }
+  },
+  "sap.ovp": {
+    "globalFilterModel": "mainService",
+    "globalFilterEntityType": "MessageHeaderSet",
+    "containerLayout": "resizable",
+    "enableLiveFilter": true,
+    "considerAnalyticalParameters": false,
+    "cards": {
+      "list01": {
+        "model": "mainService",
+        "template": "sap.ovp.cards.v4.list",
+        "settings": {
+          "title": "Status",
+          "entitySet": "MessageHeaderSet",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#Default",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+        }
+      },
+      "chart01": {
+        "model": "mainService",
+        "template": "sap.ovp.cards.v4.charts.analytical",
+        "settings": {
+          "title": "Status",
+          "entitySet": "MessageHeaderSet",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#StatusTxt"
+        }
+      },
+      "chart02": {
+        "model": "mainService",
+        "template": "sap.ovp.cards.v4.charts.analytical",
+        "settings": {
+          "title": "Priority",
+          "entitySet": "MessageHeaderSet",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#PriorityTxt"
+        }
+      },
+      "chart03": {
+        "model": "mainService",
+        "template": "sap.ovp.cards.v4.charts.analytical",
+        "settings": {
+          "title": "System ID",
+          "entitySet": "MessageHeaderSet",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#SystemId"
+        }
+      }
+    },
+    "globalFilterControlType": "MacroFilterBar"
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  }
+}

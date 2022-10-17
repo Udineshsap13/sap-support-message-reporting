@@ -77,6 +77,7 @@
     "app/alpv4lrop",
     "app/freestyle",
     "app/lrop",
-    "app/ovp"
+    "app/ovp",
+    "app/ovpv4"
   ]
 }
